@@ -2,11 +2,11 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Al Angulo</title>
+    <title>Al Angulo | Noticias Futbol</title>
 </head>
 
 <body>
-    ><header>
+    <header>
         <h1>Al Angulo</h1>
         <nav>
             <a href="#inicio">Inicio</a>
@@ -21,7 +21,7 @@
     <h2>Bienvenidos</h2>
     <p>La mejor web para ver los acontecimntos recientes del futbol mundial. </p>
     
-    <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="400">
+    <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Chicos jugando fútbol en una cancha" width="400">
 </section>
 
 <section id="noticias">
@@ -31,7 +31,7 @@
         <h3>El FC Barcelona apunta a ser campeon tras nuevo "pinchazo" del Real Madrid</h3>
         <p>El equipo merengue no pudo en su visita a la Cartuja y se aleja de una posible persecucion al titulo</p>
 
-        <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="300">
+        <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"alt="Jugadores del Real Madrid tras el empate" width="300">
     </article>
 
 </section>
@@ -48,7 +48,7 @@
 <section id="contacto">
     <h2>Contactanos</h2>
     <p>Instagram: AlAnguloX </p>
-    <p>X:TheAlAngulo </p>
+    <p>X(twitter):TheAlAngulo </p>
 </section>
 
 <hr>
@@ -69,15 +69,15 @@
     <h2>Opinión del hincha</h2>
     <p>Déjanos tu opinión sobre tu equipo favorito y el fútbol actual.</p>
 
-    <form>
+    <form method="POST">
         <label for="nombre">Nombre:</label><br>
-        <input type="text" id="nombre" name="nombre"><br><br>
+        <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre"><br><br>
 
         <label for="equipo">Equipo favorito:</label><br>
-        <input type="text" id="equipo" name="equipo"><br><br>
+        <input type="text" id="equipo" name="equipo" required placeholder="Ej: Real Madrid"><br><br>
 
-        <label for="opinion">Tu opinión:</label><br>
-        <textarea id="opinion" name="opinion" rows="4" cols="30"></textarea><br><br>
+        <label for="opinion_texto">Tu opinión:</label><br>
+        <textarea id="opinion_texto" name="opinion" rows="4" cols="30" required></textarea><br><br>
 
         <button type="submit">Enviar opinión</button>
         <button type="reset">Limpiar</button>
