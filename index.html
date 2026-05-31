@@ -2,109 +2,207 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Al Angulo | Noticias Futbol</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al Angulo | Noticias de Fútbol Mundial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/estilos.css">
 </head>
-
 <body>
 
-    <!-- HEADER -->
-    <header>
-        <h1 id="principal">Al Angulo</h1>
-        <nav>
-            <a href="#inicio">Inicio</a>
-            <a href="#noticias">Noticias</a>
-            <a href="#resultados">Resultados</a>
-            <a href="#proximos">Próximos encuentros</a>
-            <a href="#opinion">Opinión</a>
-            <a href="#contacto">Contacto</a>
-        </nav>
-        <hr>
+    <header class="main-header">
+        <div class="header-container">
+            <h1 id="principal"><i class="fa-solid fa-Futbol"></i> Al Angulo</h1>
+            <nav class="nav-menu">
+                <a href="#inicio"><i class="fa-solid fa-house"></i> Inicio</a>
+                <a href="#noticias"><i class="fa-solid fa-newspaper"></i> Noticias</a>
+                <a href="#resultados"><i class="fa-solid fa-square-poll-vertical"></i> Posiciones</a>
+                <a href="#proximos"><i class="fa-solid fa-calendar-days"></i> Encuentros</a>
+                <a href="#multimedia"><i class="fa-solid fa-video"></i> Multimedia</a>
+                <a href="#opinion"><i class="fa-solid fa-comments"></i> Opinión</a>
+                <a href="#contacto"><i class="fa-solid fa-address-book"></i> Contacto</a>
+            </nav>
+        </div>
     </header>
 
-    <!-- MAIN -->
     <main>
-
-        <!-- SECCION INICIO -->
-        <section id="inicio">
-            <h2>Bienvenidos</h2>
-            <p>La mejor web para ver los acontecimientos recientes del fútbol mundial.</p>
-            <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-                 alt="Chicos jugando fútbol en una cancha">
+        <section id="inicio" class="hero-section">
+            <div class="hero-content">
+                <h2>Bienvenidos al Templo del Gol</h2>
+                <p>La mejor web para vivir la pasión y los acontecimientos recientes del fútbol mundial en tiempo real.</p>
+                <a href="#noticias" class="btn-primary">Ver Últimas Noticias</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?q=80&w=1170&auto=format&fit=crop" alt="Chicos jugando fútbol">
+            </div>
         </section>
 
-        <!-- SECCION NOTICIAS -->
-        <section id="noticias">
-            <h2>Últimas Noticias</h2>
+        <section id="noticias" class="container">
+            <h2 class="section-title">Últimas Noticias</h2>
+            <div class="grid-noticias">
+                <article class="card-noticia">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=1170&auto=format&fit=crop" alt="Estadio de fútbol">
+                    </div>
+                    <div class="card-body">
+                        <span class="badge">La Liga</span>
+                        <h3>El FC Barcelona apunta al título tras tropiezo del Real Madrid</h3>
+                        <p>El equipo merengue no pudo sumar de a tres en su última visita y se aleja de la persecución por la punta del campeonato.</p>
+                        <a href="#" class="read-more">Leer más <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </article>
 
-            <article class="item-noticia">
-                <h3>El FC Barcelona apunta a ser campeón tras nuevo "pinchazo" del Real Madrid</h3>
-                <p>El equipo merengue no pudo en su visita a la Cartuja y se aleja de una posible persecución al título.</p>
-                <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-                     alt="Jugadores del Real Madrid tras el empate">
-            </article>
-
-            <!-- Puedes agregar más artículos aquí -->
+                <article class="card-noticia">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1170&auto=format&fit=crop" alt="Balón de fútbol">
+                    </div>
+                    <div class="card-body">
+                        <span class="badge">Champions League</span>
+                        <h3>Se definen los cuartos de final en noches mágicas</h3>
+                        <p>Los gigantes de Europa se preparan para choques electrizantes. La Orejona busca dueño en una temporada impredecible.</p>
+                        <a href="#" class="read-more">Leer más <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
         </section>
 
-        <hr>
-
-        <!-- SECCION RESULTADOS -->
-        <section id="resultados">
-            <h2>Últimos Resultados</h2>
-            <p>Real Betis 1 - 1 Real Madrid</p>
-            <p>Napoli 3 - 0 Cremonese</p>
-            <p>Southampton 0 - 5 Nottingham Forest</p>
+        <section id="resultados" class="bg-light padding-section">
+            <div class="container">
+                <h2 class="section-title">Tabla de Posiciones Virtual</h2>
+                <div class="table-responsive">
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th>Pos</th>
+                                <th>Club</th>
+                                <th>PJ</th>
+                                <th>PG</th>
+                                <th>PE</th>
+                                <th>PP</th>
+                                <th>Pts</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="top-team">
+                                <td>1</td>
+                                <td><i class="fa-solid fa-shield-halved text-primary"></i> Barcelona</td>
+                                <td>25</td>
+                                <td>20</td>
+                                <td>3</td>
+                                <td>2</td>
+                                <td><strong>63</strong></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td><i class="fa-solid fa-shield-halved text-danger"></i> Real Madrid</td>
+                                <td>25</td>
+                                <td>17</td>
+                                <td>5</td>
+                                <td>3</td>
+                                <td><strong>56</strong></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td><i class="fa-solid fa-shield-halved text-success"></i> Atlético Madrid</td>
+                                <td>25</td>
+                                <td>14</td>
+                                <td>6</td>
+                                <td>5</td>
+                                <td><strong>48</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </section>
 
-        <hr>
-
-        <!-- SECCION PROXIMOS ENCUENTROS -->
-        <section id="proximos">
-            <h2>Próximos Encuentros</h2>
-            <ul>
-                <li>Getafe vs Barcelona</li>
-                <li>Friburgo vs Bayern Múnich</li>
-                <li>Southampton vs Man City</li>
-            </ul>
+        <section id="proximos" class="container padding-section">
+            <h2 class="section-title">Próximos Encuentros Electrizantes</h2>
+            <div class="flex-encuentros">
+                <div class="match-card">
+                    <div class="league">Bundesliga</div>
+                    <div class="teams">Friburgo <span>vs</span> Bayern Múnich</div>
+                    <div class="time"><i class="fa-regular fa-clock"></i> 14:30 PM</div>
+                </div>
+                <div class="match-card">
+                    <div class="league">La Liga</div>
+                    <div class="teams">Getafe <span>vs</span> Barcelona</div>
+                    <div class="time"><i class="fa-regular fa-clock"></i> 16:15 PM</div>
+                </div>
+                <div class="match-card">
+                    <div class="league">Premier League</div>
+                    <div class="teams">Southampton <span>vs</span> Man City</div>
+                    <div class="time"><i class="fa-regular fa-clock"></i> 11:30 AM</div>
+                </div>
+            </div>
         </section>
 
-        <hr>
-
-        <!-- SECCION OPINION -->
-        <section id="opinion">
-            <h2>Opinión del Hincha</h2>
-            <p>Déjanos tu opinión sobre tu equipo favorito y el fútbol actual.</p>
-
-            <form method="POST">
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
-
-                <label for="equipo">Equipo favorito:</label>
-                <input type="text" id="equipo" name="equipo" required placeholder="Ej: Real Madrid">
-
-                <label for="opinion_texto">Tu opinión:</label>
-                <textarea id="opinion_texto" name="opinion" rows="4" cols="30" required></textarea>
-
-                <button type="submit">Enviar opinión</button>
-                <button type="reset">Limpiar</button>
-            </form>
+        <section id="multimedia" class="bg-light padding-section">
+            <div class="container">
+                <h2 class="section-title">Contenido Multimedia</h2>
+                <div class="grid-multimedia">
+                    <div class="media-box">
+                        <h3>Análisis del Partido</h3>
+                        <video controls poster="https://images.unsplash.com/photo-1540747737956-378724044282?q=80&w=600&auto=format&fit=crop" class="responsive-video">
+                            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                            Tu navegador no soporta videos.
+                        </video>
+                    </div>
+                    <div class="media-box">
+                        <h3>Podcast: El Debate Semanal</h3>
+                        <div class="audio-card">
+                            <i class="fa-solid fa-microphone-lines fa-3x text-primary"></i>
+                            <audio controls class="responsive-audio">
+                                <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+                                Tu navegador no soporta audio.
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <hr>
-
-        <!-- SECCION CONTACTO -->
-        <section id="contacto">
-            <h2>Contáctanos</h2>
-            <p>Instagram: <a href="#">@AlAnguloX</a></p>
-            <p>Twitter: <a href="#">@TheAlAngulo</a></p>
+        <section id="opinion" class="container padding-section">
+            <div class="form-wrapper">
+                <h2><i class="fa-solid fa-pen-to-square"></i> La Tribuna del Hincha</h2>
+                <p>Déjanos tu opinión sobre tu equipo favorito y debate con la comunidad.</p>
+                <form method="POST" class="custom-form">
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo:</label>
+                        <input type="text" id="nombre" name="nombre" required placeholder="Ingresa tu nombre">
+                    </div>
+                    <div class="form-group">
+                        <label for="equipo">Equipo de tus Amores:</label>
+                        <input type="text" id="equipo" name="equipo" required placeholder="Ej: Real Madrid, Alianza, Universitario">
+                    </div>
+                    <div class="form-group">
+                        <label for="opinion_texto">Tu Análisis Técnico:</label>
+                        <textarea id="opinion_texto" name="opinion" rows="4" required placeholder="Escribe aquí tu comentario deportivo..."></textarea>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> Enviar Opinión</button>
+                        <button type="reset" class="btn-reset"><i class="fa-solid fa-trash-can"></i> Limpiar</button>
+                    </div>
+                </form>
+            </div>
         </section>
 
+        <section id="contacto" class="contact-section">
+            <div class="container">
+                <h2>¿Quieres unirte al equipo de redacción?</h2>
+                <p>Síguenos en nuestras redes oficiales para sorteos y coberturas en vivo.</p>
+                <div class="social-links">
+                    <a href="#" class="social-btn instagram"><i class="fa-brands fa-instagram"></i> @AlAnguloX</a>
+                    <a href="#" class="social-btn twitter"><i class="fa-brands fa-x-twitter"></i> @TheAlAngulo</a>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- FOOTER -->
-    <footer>
-        <p>© 2026 - Al Angulo by UTP</p>
+    <footer class="main-footer">
+        <p>&copy; 2026 - <strong>Al Angulo</strong> | Desarrollado para Diseño y Desarrollo Web - UTP</p>
     </footer>
 
 </body>
