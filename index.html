@@ -3,89 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <title>Al Angulo | Noticias Futbol</title>
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 
 <body>
+
+    <!-- HEADER -->
     <header>
-        <h1>Al Angulo</h1>
+        <h1 id="principal">Al Angulo</h1>
         <nav>
             <a href="#inicio">Inicio</a>
             <a href="#noticias">Noticias</a>
+            <a href="#resultados">Resultados</a>
+            <a href="#proximos">Próximos encuentros</a>
+            <a href="#opinion">Opinión</a>
             <a href="#contacto">Contacto</a>
-            <a href="#opinion">Opinion</a>
         </nav>
         <hr>
     </header>
 
-<section id="inicio">
-    <h2>Bienvenidos</h2>
-    <p>La mejor web para ver los acontecimntos recientes del futbol mundial. </p>
-    
-    <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Chicos jugando fútbol en una cancha" width="400">
-</section>
+    <!-- MAIN -->
+    <main>
 
-<section id="noticias">
-    <h2>Ultimas Noticias</h2>
+        <!-- SECCION INICIO -->
+        <section id="inicio">
+            <h2>Bienvenidos</h2>
+            <p>La mejor web para ver los acontecimientos recientes del fútbol mundial.</p>
+            <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                 alt="Chicos jugando fútbol en una cancha">
+        </section>
 
-    <article>
-        <h3>El FC Barcelona apunta a ser campeon tras nuevo "pinchazo" del Real Madrid</h3>
-        <p>El equipo merengue no pudo en su visita a la Cartuja y se aleja de una posible persecucion al titulo</p>
+        <!-- SECCION NOTICIAS -->
+        <section id="noticias">
+            <h2>Últimas Noticias</h2>
 
-        <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"alt="Jugadores del Real Madrid tras el empate" width="300">
-    </article>
+            <article class="item-noticia">
+                <h3>El FC Barcelona apunta a ser campeón tras nuevo "pinchazo" del Real Madrid</h3>
+                <p>El equipo merengue no pudo en su visita a la Cartuja y se aleja de una posible persecución al título.</p>
+                <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                     alt="Jugadores del Real Madrid tras el empate">
+            </article>
 
-</section>
+            <!-- Puedes agregar más artículos aquí -->
+        </section>
 
-<hr>
-<section>
-    <h2>Ultimos resultados</h2>
-    <p>Real Betis 1 - 1 Real Madrid</p>
-    <p>Napoli 3 - 0 Cremonese</p>
-    <p>Southampton 0 - 5 Notingham Forest</p>
-</section>
+        <hr>
 
+        <!-- SECCION RESULTADOS -->
+        <section id="resultados">
+            <h2>Últimos Resultados</h2>
+            <p>Real Betis 1 - 1 Real Madrid</p>
+            <p>Napoli 3 - 0 Cremonese</p>
+            <p>Southampton 0 - 5 Nottingham Forest</p>
+        </section>
 
-<section id="contacto">
-    <h2>Contactanos</h2>
-    <p>Instagram: AlAnguloX </p>
-    <p>X(twitter):TheAlAngulo </p>
-</section>
+        <hr>
 
-<hr>
+        <!-- SECCION PROXIMOS ENCUENTROS -->
+        <section id="proximos">
+            <h2>Próximos Encuentros</h2>
+            <ul>
+                <li>Getafe vs Barcelona</li>
+                <li>Friburgo vs Bayern Múnich</li>
+                <li>Southampton vs Man City</li>
+            </ul>
+        </section>
 
-<section>
-    <h2>Proximos encuentros</h2>
+        <hr>
 
-    <ul>
-        <li>Getafe vs Barcelona</li>
-        <li>Friburgo vs Bayern Munchen</li>
-        <li>Southampton vs Man City</li>
-    </ul>
-</section>
+        <!-- SECCION OPINION -->
+        <section id="opinion">
+            <h2>Opinión del Hincha</h2>
+            <p>Déjanos tu opinión sobre tu equipo favorito y el fútbol actual.</p>
 
-<hr>
+            <form method="POST">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
 
-<section id="opinion">
-    <h2>Opinión del hincha</h2>
-    <p>Déjanos tu opinión sobre tu equipo favorito y el fútbol actual.</p>
+                <label for="equipo">Equipo favorito:</label>
+                <input type="text" id="equipo" name="equipo" required placeholder="Ej: Real Madrid">
 
-    <form method="POST">
-        <label for="nombre">Nombre:</label><br>
-        <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre"><br><br>
+                <label for="opinion_texto">Tu opinión:</label>
+                <textarea id="opinion_texto" name="opinion" rows="4" cols="30" required></textarea>
 
-        <label for="equipo">Equipo favorito:</label><br>
-        <input type="text" id="equipo" name="equipo" required placeholder="Ej: Real Madrid"><br><br>
+                <button type="submit">Enviar opinión</button>
+                <button type="reset">Limpiar</button>
+            </form>
+        </section>
 
-        <label for="opinion_texto">Tu opinión:</label><br>
-        <textarea id="opinion_texto" name="opinion" rows="4" cols="30" required></textarea><br><br>
+        <hr>
 
-        <button type="submit">Enviar opinión</button>
-        <button type="reset">Limpiar</button>
-    </form>
-</section>
+        <!-- SECCION CONTACTO -->
+        <section id="contacto">
+            <h2>Contáctanos</h2>
+            <p>Instagram: <a href="#">@AlAnguloX</a></p>
+            <p>Twitter: <a href="#">@TheAlAngulo</a></p>
+        </section>
 
-<footer>
-    <p> 2026 - AlAngulo by UTP</p>
-</footer>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 - Al Angulo by UTP</p>
+    </footer>
+
 </body>
 </html>
