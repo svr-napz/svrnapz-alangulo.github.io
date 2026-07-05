@@ -24,6 +24,13 @@
                 <a href="#contacto">Contacto</a>
             </nav>
         </div>
+        
+        <button
+        class="menu-toggle"
+        id="menu-toggle"
+        aria-label="Abrir menú"
+        aria-expanded="false"> ☰
+    </button>
     </header>
 
     <main>
@@ -178,7 +185,7 @@
             <div class="form-wrapper">
                 <h2>La Tribuna del Hincha</h2>
                 <p>Déjanos tu opinión sobre tu equipo favorito y debate con la comunidad.</p>
-                <form method="POST" class="custom-form">
+                <form id="form-opinion" class="custom-form">
                     <div class="form-group">
                         <label for="nombre">Nombre Completo:</label>
                         <input type="text" id="nombre" name="nombre" required placeholder="Ingresa tu nombre">
@@ -198,6 +205,14 @@
                 </form>
             </div>
         </section>
+        
+        <section class="opiniones-comunidad">
+            <h2>Opiniones de la Comunidad</h2>
+            <p id="contador-opiniones">
+                Total de opiniones: 0
+            </p>
+            <div id="lista-opiniones"></div>
+        </section>
 
         <section id="contacto" class="contact-section">
             <div class="container">
@@ -210,10 +225,18 @@
             </div>
         </section>
     </main>
-    
+
     <footer class="main-footer">
-        <p>&copy; 2026 - <strong>Al Angulo</strong> | Desarrollado para Diseño y Desarrollo Web - UTP</p>
+        <p>&copy; 2026 - <strong>Al Angulo</strong> | Desarrollado para Taller de Programacion Web - UTP</p>
     </footer>
+    
+    <dialog id="modal-noticia">
+        <h2>Noticia completa</h2>
+        <p id="contenido-modal"></p>
+        <button id="cerrar-modal"> Cerrar </button>
+    </dialog>
+    
+    <script src="js/script.js" defer></script>
 
 </body>
 </html>
