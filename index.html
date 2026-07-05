@@ -47,8 +47,13 @@
         
         <section class="busqueda">
             <h2>Buscar Noticias</h2>
-            <input type="text" id="buscador" placeholder="Buscar noticia...">
+            <input type="text"
+            id="buscador"
+            placeholder="Buscar noticia..."
+            autocomplete="off">
+            <p id="contador-noticias"> Noticias encontradas: 0 </p>
         </section>
+
         <section id="noticias" class="container">
             <h2 class="section-title">Últimas Noticias</h2>
             <div class="grid-noticias">
@@ -60,7 +65,7 @@
                         <span class="badge">La Liga</span>
                         <h3>El FC Barcelona apunta al título tras tropiezo del Real Madrid</h3>
                         <p>El equipo merengue no pudo sumar de a tres en su última visita y se aleja de la persecución por la punta del campeonato.</p>
-                        <a href="#" class="read-more">Leer más</a>
+                        <a href="#" class="read-more" data-noticia="0">Leer más</a>
                     </div>
                 </article>
 
@@ -72,25 +77,25 @@
                         <span class="badge">Champions League</span>
                         <h3>Se definen los cuartos de final en noches mágicas</h3>
                         <p>Los gigantes de Europa se preparan para choques electrizantes. La Orejona busca dueño en una temporada impredecible.</p>
-                        <a href="#" class="read-more">Leer más</a>
+                        <a href="#" class="read-more" data-noticia="1">Leer más</a>
                     </div>
                 </article>
             </div>
         </section>
         
-        <aside class="sidebar">
+        <aside class="sidebar" id="sidebar">
             <h2>Dato Deportivo</h2>
             <article>
                 <h3>Jugador de la Semana</h3>
-                <p>Lamine Yamal</p>
+                <p id="dato-jugador">Lamine Yamal</p>
             </article>
             <article>
                 <h3>Máximo Goleador</h3>
-                <p>Robert Lewandowski - 22 goles</p>
+                <p id="dato-goleador">Robert Lewandowski - 22 goles</p>
             </article>
             <article>
                 <h3>Próxima Final</h3>
-                <p>Champions League - Mayo 2026</p>
+                <p id="prox-final">Champions League - Mayo 2026</p>
             </article>
         </aside>
 
