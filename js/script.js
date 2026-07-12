@@ -1,10 +1,17 @@
-// --- 1. SELECCIÓN DE ELEMENTOS DEL DOM ---
-const menu = document.querySelector("#menu-toggle");
-const nav = document.querySelector(".nav-menu");
+// --- 1. REFERENCIAS DEL DOM ---
+const menuToggle = document.querySelector("#menu-toggle");
+const navMenu = document.querySelector("#nav-menu");
+const vistaHome = document.querySelector("#vista-home");
+const vistaArticulo = document.querySelector("#vista-articulo");
+const btnVolver = document.querySelector("#btn-volver");
+
+// Elementos del Artículo Dinámico
+const artBadge = document.querySelector("#art-badge");
+const artTitulo = document.querySelector("#art-titulo");
+const artContenido = document.querySelector("#art-contenido");
+
+// Elementos de Opiniones y Filtros
 const formulario = document.querySelector("#form-opinion");
-const inputNombre = document.querySelector("#nombre");
-const inputEquipo = document.querySelector("#equipo");
-const inputOpinion = document.querySelector("#opinion_texto");
 const listaOpiniones = document.querySelector("#lista-opiniones");
 const contadorOpiniones = document.querySelector("#contador-opiniones");
 const buscador = document.querySelector("#buscador");
@@ -12,157 +19,164 @@ const noticias = document.querySelectorAll(".card-noticia");
 const contadorNoticias = document.querySelector("#contador-noticias");
 const botonesFiltro = document.querySelectorAll(".btn-filtro");
 
-// Elementos de la Ventana Modal
-const modal = document.querySelector("#modal-noticia");
-const contenidoModal = document.querySelector("#contenido-modal");
-const cerrarModal = document.querySelector("#cerrar-modal");
-
-// --- 2. BASE DE DATOS LOCAL PARA NOTICIAS EXTENDIDAS ---
-const baseNoticias = {
-    "0": "El FC Barcelona consolida su liderato en La Liga tras una jornada redonda. Mientras los azulgranas vencieron con autoridad en su encuentro, el Real Madrid tropezó inesperadamente como visitante, dejando escapar 3 puntos vitales. Analistas deportivos sugieren que la rotación de plantilla y la solidez defensiva impuesta por el cuerpo técnico son las claves de este éxito rotundal.",
-    "1": "Las noches mágicas de la Champions League están de regreso. Los emparejamientos de cuartos de final prometen ser de los más reñidos de la década, con choques directos entre los máximos favoritos del torneo. Los equipos ingleses y españoles buscan imponer su hegemonía en una competición europea donde nunca se puede dar nada por sentado.",
-    "2": "¡Arranque electrizante en la NBA! Los Playoffs han comenzado con sorpresas mayúsculas en la conferencia oeste. El juego físico en la pintura y una efectividad superior al 45% en tiros de tres puntos le permitieron a los Lakers asegurar el primer partido de la serie, desatando la euforia de sus aficionados de cara al campeonato."
+// --- 2. BASE DE DATOS LOCAL PARA "LEER MÁS" ---
+const articulosCompletos = {
+    "0": {
+        categoria: "Fútbol - La Liga",
+        titulo: "El FC Barcelona apunta al título tras tropiezo del Real Madrid",
+        cuerpo: "El FC Barcelona se consolida como el candidato número uno para llevarse el trofeo liguero esta temporada. Tras la última derrota del Real Madrid en su visita andaluza, los blaugranas mantienen una ventaja de 7 puntos limpios. El esquema táctico basado en la presión alta y la madurez de sus canteranos ha transformado las flaquezas del inicio de torneo en una máquina coordinada de hacer goles."
+    },
+    "1": {
+        categoria: "Fútbol - Champions League",
+        titulo: "Se definen los cuartos de final en noches mágicas de Europa",
+        cuerpo: "La UEFA Champions League entra en su fase más electrizante. Los emparejamientos de cuartos de final han dejado llaves históricas: el fútbol inglés medirá sus fuerzas directamente contra la mística de los clubes españoles. Expertos estiman que los planteamientos de juego de posesión serán puestos a prueba frente a las contras letales que caracterizan este tramo definitivo de la competición."
+    },
+    "2": {
+        categoria: "Básquet - NBA",
+        titulo: "Los Lakers dominan en el inicio de los Playoffs de la NBA",
+        cuerpo: "Arrancó la verdadera postemporada del baloncesto norteamericano. Con un juego imponente en la pintura y un acierto letal desde la línea de tres puntos, los Angeles Lakers se llevaron el primer juego de la serie frente a sus eternos rivales. El control de los tiempos en el último cuarto evidencia que la experiencia en campeonatos pesa más que la velocidad juvenil en estas instancias."
+    },
+    "3": {
+        categoria: "Fórmula 1 - GP de Mónaco",
+        titulo: "GP de Mónaco: Estrategias extremas bajo la lluvia del Principado",
+        cuerpo: "Las calles de Montecarlo vivieron una de las carreras más caóticas y espectaculares de los últimos años. La aparición sorpresiva de un fuerte diluvio a mitad de carrera obligó a los ingenieros de pista a tomar decisiones drásticas con los neumáticos intermedios. Los adelantamientos milimétricos rozando las barreras demostraron el talento puro de la parrilla actual de la F1."
+    }
 };
 
-// --- 3. ESTADO DE LA APLICACIÓN (Carga inicial desde LocalStorage) ---
-let opiniones = JSON.parse(localStorage.getItem("opiniones_alangulo")) || [];
+// --- 3. PERSISTENCIA DE DATOS (LocalStorage) ---
+let opiniones = JSON.parse(localStorage.getItem("alangulo_opiniones")) || [];
 
 // --- 4. FUNCIONES MODULARES ---
 
-// Renderizar la tribuna de opiniones
+// Alternar entre la vista principal y la vista del artículo técnico
+function cambiarVista(noticiaId) {
+    if (noticiaId !== null && articulosCompletos[noticiaId]) {
+        // Cargar datos en la sección de artículo
+        artBadge.textContent = articulosCompletos[noticiaId].categoria;
+        artTitulo.textContent = articulosCompletos[noticiaId].titulo;
+        artContenido.textContent = articulosCompletos[noticiaId].cuerpo;
+
+        // Mutar vistas
+        vistaHome.style.display = "none";
+        vistaArticulo.style.display = "block";
+        window.scrollTo(0, 0);
+    } else {
+        // Regresar al Home
+        vistaArticulo.style.display = "none";
+        vistaHome.style.display = "block";
+    }
+}
+
+// Pintar comentarios guardados
 function renderOpiniones() {
     contadorOpiniones.textContent = `Total de opiniones: ${opiniones.length}`;
-
     if (opiniones.length === 0) {
-        listaOpiniones.innerHTML = `<p class="no-comments">Sé el primero en dejar tu análisis en la tribuna...</p>`;
+        listaOpiniones.innerHTML = `<p style="color: grey; font-style: italic;">La tribuna está vacía. ¡Sé el primero en comentar!</p>`;
         return;
     }
-
-    listaOpiniones.innerHTML = opiniones.map((opinion, indice) => `
-        <article class="card-opinion">
-            <h4>${escapeHTML(opinion.nombre)}</h4>
-            <p><strong>Equipo favorito:</strong> ${escapeHTML(opinion.equipo)}</p>
-            <p>${escapeHTML(opinion.comentario)}</p>
-            <button class="btn-eliminar" data-id="${indice}">❌ Eliminar</button>
+    listaOpiniones.innerHTML = opiniones.map((op, i) => `
+        <article class="card-opinion" style="border-left: 5px solid #1a2536; margin-bottom: 15px; padding: 10px; background: #fafafa;">
+            <h4>${escapeHTML(op.nombre)}</h4>
+            <p><strong>Equipo:</strong> ${escapeHTML(op.equipo)}</p>
+            <p>${escapeHTML(op.comentario)}</p>
+            <button class="btn-eliminar" data-id="${i}" style="background:crimson; color:white; border:none; padding:3px 8px; cursor:pointer; border-radius:4px;">Eliminar</button>
         </article>
     `).join("");
 }
 
-// Guardar datos persistentemente
-function guardarEnLocalStorage() {
-    localStorage.setItem("opiniones_alangulo", JSON.stringify(opiniones));
+function escapeHTML(text) {
+    return text.replace(/[&<>'"]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[m]));
 }
 
-// Función de seguridad para evitar inyección de código (XSS)
-function escapeHTML(str) {
-    return str.replace(/[&<>'"]/g, tag => ({
-        '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
-    }[tag] || tag));
-}
+// --- 5. LOGICA DE EVENTOS ---
 
-// --- 5. MANEJADORES DE EVENTOS (LISTENERS) ---
-
-// Menú Responsive Activo
-menu.addEventListener("click", () => {
-    const isActive = nav.classList.toggle("active");
-    menu.setAttribute("aria-expanded", isActive);
-    menu.innerHTML = isActive ? "✖" : "☰";
+// Corrección Menú Hamburguesa
+menuToggle.addEventListener("click", () => {
+    const expandido = menuToggle.getAttribute("aria-expanded") === "true";
+    menuToggle.setAttribute("aria-expanded", !expandido);
+    navMenu.classList.toggle("active");
 });
 
-// Enviar Opinión (Formulario)
-formulario.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    const nuevaOpinion = {
-        nombre: inputNombre.value.trim(),
-        equipo: inputEquipo.value.trim(),
-        comentario: inputOpinion.value.trim()
-    };
-
-    opiniones.push(nuevaOpinion);
-    guardarEnLocalStorage();
-    renderOpiniones();
-    formulario.reset();
-});
-
-// Eliminar Opinión (Delegación de Eventos)
-listaOpiniones.addEventListener("click", (event) => {
-    const boton = event.target.closest(".btn-eliminar");
-    if (!boton) return;
-
-    const indice = boton.dataset.id;
-    opiniones.splice(indice, 1);
-    guardarEnLocalStorage();
-    renderOpiniones();
-});
-
-// Buscador de Noticias en tiempo real
-buscador.addEventListener("input", () => {
-    const texto = buscador.value.toLowerCase();
-    let visibles = 0;
-
-    noticias.forEach(noticia => {
-        const contenido = noticia.textContent.toLowerCase();
-        // Verifica si cumple con el texto buscado
-        if (contenido.includes(texto)) {
-            noticia.style.display = "block";
-            visibles++;
-        } else {
-            noticia.style.display = "none";
-        }
+// Cerrar menú móvil automáticamente al hacer clic en un enlace de navegación
+document.querySelectorAll(".nav-link").forEach(link => {
+    link.addEventListener("click", () => {
+        navMenu.classList.remove("active");
+        menuToggle.setAttribute("aria-expanded", "false");
     });
-
-    // Reiniciar los botones de filtro si se realiza una búsqueda general
-    botonesFiltro.forEach(b => b.classList.remove("active"));
-    botonesFiltro[0].add("active"); // Activa el botón 'Todos'
-
-    contadorNoticias.textContent = `Noticias encontradas: ${visibles}`;
 });
 
-// Filtros / Cambios de Vista Opcionales (Multideporte)
+// Enrutamiento mediante delegación de eventos al hacer clic en "Leer más"
+document.addEventListener("click", (e) => {
+    const tarjetaLeerMas = e.target.closest(".read-more");
+    if (tarjetaLeerMas) {
+        e.preventDefault();
+        const id = tarjetaLeerMas.dataset.noticia;
+        cambiarVista(id);
+    }
+});
+
+btnVolver.addEventListener("click", () => cambiarVista(null));
+
+// Filtros de Vistas (Multideporte)
 botonesFiltro.forEach(boton => {
     boton.addEventListener("click", () => {
         botonesFiltro.forEach(b => b.classList.remove("active"));
         boton.classList.add("active");
 
-        const deporteSeleccionado = boton.dataset.deporte;
-        let visibles = 0;
+        const deporte = boton.dataset.deporte;
+        let contador = 0;
 
         noticias.forEach(noticia => {
-            const deporteNoticia = noticia.dataset.deporte;
-
-            if (deporteSeleccionado === "todos" || deporteNoticia === deporteSeleccionado) {
+            if (deporte === "todos" || noticia.dataset.deporte === deporte) {
                 noticia.style.display = "block";
-                visibles++;
+                contador++;
             } else {
                 noticia.style.display = "none";
             }
         });
-
-        contadorNoticias.textContent = `Noticias encontradas: ${visibles}`;
-        if (buscador) buscador.value = ""; // Limpia el buscador al cambiar de vista
+        contadorNoticias.textContent = `Noticias encontradas: ${contador}`;
+        buscador.value = "";
     });
 });
 
-// Control de la Ventana Modal (Leer Más)
-document.querySelector("#noticias").addEventListener("click", (event) => {
-    const link = event.target.closest(".read-more");
-    if (!link) return;
+// Buscador Inteligente
+buscador.addEventListener("input", () => {
+    const termino = buscador.value.toLowerCase();
+    let contador = 0;
+    noticias.forEach(noticia => {
+        if (noticia.textContent.toLowerCase().includes(termino)) {
+            noticia.style.display = "block";
+            contador++;
+        } else {
+            noticia.style.display = "none";
+        }
+    });
+    contadorNoticias.textContent = `Noticias encontradas: ${contador}`;
+});
 
-    event.preventDefault();
-    const idNoticia = link.dataset.noticia;
+// Guardar Comentarios en Formulario
+formulario.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const nuevaOpinion = {
+        nombre: document.querySelector("#nombre").value,
+        equipo: document.querySelector("#equipo").value,
+        comentario: document.querySelector("#opinion_texto").value
+    };
+    opiniones.push(nuevaOpinion);
+    localStorage.setItem("alangulo_opiniones", JSON.stringify(opiniones));
+    renderOpiniones();
+    formulario.reset();
+});
 
-    if (baseNoticias[idNoticia]) {
-        contenidoModal.textContent = baseNoticias[idNoticia];
-        modal.showModal(); // Método nativo de HTML5 Dialog
+// Eliminar Comentario
+listaOpiniones.addEventListener("click", (e) => {
+    if (e.target.classList.contains("btn-eliminar")) {
+        const id = e.target.dataset.id;
+        opiniones.splice(id, 1);
+        localStorage.setItem("alangulo_opiniones", JSON.stringify(opiniones));
+        renderOpiniones();
     }
 });
 
-cerrarModal.addEventListener("click", () => {
-    modal.close();
-});
-
-// --- 6. EJECUCIÓN INICIAL ---
-// Cuenta cuántas noticias hay al abrir la página y carga los comentarios guardados
-contadorNoticias.textContent = `Noticias encontradas: ${noticias.length}`;
+// --- 6. ARRANQUE INICIAL ---
 renderOpiniones();
