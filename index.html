@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="estilos/estilos.css">
 </head>
+
 <body>
 
     <header class="main-header">
@@ -24,65 +26,100 @@
                 <a href="#contacto">Contacto</a>
             </nav>
         </div>
-        
-        <button
-        class="menu-toggle"
-        id="menu-toggle"
-        aria-label="Abrir menú"
-        aria-expanded="false"> ☰
-    </button>
+
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false"> ☰
+        </button>
     </header>
 
     <main>
         <section id="inicio" class="hero-section">
             <div class="hero-content">
                 <h2>Bienvenidos al Templo del Gol</h2>
-                <p>La mejor web para vivir la pasión y los acontecimientos recientes del fútbol mundial en tiempo real.</p>
+                <p>La mejor web para vivir la pasión y los acontecimientos recientes del fútbol mundial en tiempo real.
+                </p>
                 <a href="#noticias" class="btn-primary">Ver Últimas Noticias</a>
             </div>
             <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?q=80&w=1170&auto=format&fit=crop" alt="Chicos jugando fútbol">
+                <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?q=80&w=1170&auto=format&fit=crop"
+                    alt="Chicos jugando fútbol">
             </div>
         </section>
-        
+
         <section class="busqueda">
             <h2>Buscar Noticias</h2>
-            <input type="text"
-            id="buscador"
-            placeholder="Buscar noticia..."
-            autocomplete="off">
+            <input type="text" id="buscador" placeholder="Buscar noticia..." autocomplete="off">
             <p id="contador-noticias"> Noticias encontradas: 0 </p>
         </section>
+
+
+
+
+        <section class="vistas-deporte container">
+            <button class="btn-filtro active" data-deporte="todos">Todos los Deportes</button>
+            <button class="btn-filtro" data-deporte="futbol">Fútbol</button>
+            <button class="btn-filtro" data-deporte="basquet">Básquet</button>
+            <button class="btn-filtro" data-deporte="f1">Fórmula 1</button>
+        </section>
+
+        <div class="grid-noticias">
+            <article class="card-noticia" data-deporte="futbol">
+                <a href="#" class="read-more" data-noticia="0">Leer más</a>
+            </article>
+
+            <article class="card-noticia" data-deporte="futbol">
+                <a href="#" class="read-more" data-noticia="1">Leer más</a>
+            </article>
+
+            <article class="card-noticia" data-deporte="basquet">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=1170" alt="NBA">
+                </div>
+                <div class="card-body">
+                    <span class="badge">NBA</span>
+                    <h3>Los Lakers dominan en el inicio de los Playoffs</h3>
+                    <p>Con una actuación estelar, el equipo angelino toma ventaja en una serie que promete chispas de
+                        principio a fin.</p>
+                    <a href="#" class="read-more" data-noticia="2">Leer más</a>
+                </div>
+            </article>
+        </div>
+
+
+
 
         <section id="noticias" class="container">
             <h2 class="section-title">Últimas Noticias</h2>
             <div class="grid-noticias">
                 <article class="card-noticia">
                     <div class="card-img">
-                        <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=1170&auto=format&fit=crop" alt="Estadio de fútbol">
+                        <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=1170&auto=format&fit=crop"
+                            alt="Estadio de fútbol">
                     </div>
                     <div class="card-body">
                         <span class="badge">La Liga</span>
                         <h3>El FC Barcelona apunta al título tras tropiezo del Real Madrid</h3>
-                        <p>El equipo merengue no pudo sumar de a tres en su última visita y se aleja de la persecución por la punta del campeonato.</p>
+                        <p>El equipo merengue no pudo sumar de a tres en su última visita y se aleja de la persecución
+                            por la punta del campeonato.</p>
                         <a href="#" class="read-more" data-noticia="0">Leer más</a>
                     </div>
                 </article>
 
                 <article class="card-noticia">
                     <div class="card-img">
-                        <img src="https://images.unsplash.com/photo-1614632537190-23e4146777db?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Balon de la Champions">
+                        <img src="https://images.unsplash.com/photo-1614632537190-23e4146777db?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="Balon de la Champions">
                     </div>
                     <div class="card-body">
                         <span class="badge">Champions League</span>
                         <h3>Se definen los cuartos de final en noches mágicas</h3>
-                        <p>Los gigantes de Europa se preparan para choques electrizantes. La Orejona busca dueño en una temporada impredecible.</p>
+                        <p>Los gigantes de Europa se preparan para choques electrizantes. La Orejona busca dueño en una
+                            temporada impredecible.</p>
                         <a href="#" class="read-more" data-noticia="1">Leer más</a>
                     </div>
                 </article>
             </div>
         </section>
-        
+
         <aside class="sidebar" id="sidebar">
             <h2>Dato Deportivo</h2>
             <article>
@@ -176,11 +213,13 @@
                 <div class="grid-multimedia">
                     <div class="media-box">
                         <h3>Análisis del Partido</h3>
-                        <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Análisis táctico" class="responsive-video">
+                        <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="Análisis táctico" class="responsive-video">
                     </div>
                     <div class="media-box">
                         <h3>El Debate Semanal</h3>
-                        <img src="https://images.unsplash.com/photo-1580171401298-4c2c0c44cc43?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Periodistas en cancha" class="responsive-video">
+                        <img src="https://images.unsplash.com/photo-1580171401298-4c2c0c44cc43?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="Periodistas en cancha" class="responsive-video">
                     </div>
                 </div>
             </div>
@@ -197,11 +236,13 @@
                     </div>
                     <div class="form-group">
                         <label for="equipo">Equipo de tus Amores:</label>
-                        <input type="text" id="equipo" name="equipo" required placeholder="Ej: Real Madrid, Alianza, Universitario">
+                        <input type="text" id="equipo" name="equipo" required
+                            placeholder="Ej: Real Madrid, Alianza, Universitario">
                     </div>
                     <div class="form-group">
                         <label for="opinion_texto">Tu Análisis Técnico:</label>
-                        <textarea id="opinion_texto" name="opinion" rows="4" required placeholder="Escribe aquí tu comentario deportivo..."></textarea>
+                        <textarea id="opinion_texto" name="opinion" rows="4" required
+                            placeholder="Escribe aquí tu comentario deportivo..."></textarea>
                     </div>
                     <div class="form-buttons">
                         <button type="submit" class="btn-submit">Enviar Opinión</button>
@@ -210,7 +251,7 @@
                 </form>
             </div>
         </section>
-        
+
         <section class="opiniones-comunidad">
             <h2>Opiniones de la Comunidad</h2>
             <p id="contador-opiniones">
@@ -234,14 +275,15 @@
     <footer class="main-footer">
         <p>&copy; 2026 - <strong>Al Angulo</strong> | Desarrollado para Taller de Programacion Web - UTP</p>
     </footer>
-    
+
     <dialog id="modal-noticia">
         <h2>Noticia completa</h2>
         <p id="contenido-modal"></p>
         <button id="cerrar-modal"> Cerrar </button>
     </dialog>
-    
+
     <script src="js/script.js" defer></script>
 
 </body>
+
 </html>
