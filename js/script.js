@@ -17,7 +17,9 @@ const contadorOpiniones = document.querySelector("#contador-opiniones");
 const buscador = document.querySelector("#buscador");
 const noticias = document.querySelectorAll(".card-noticia");
 const contadorNoticias = document.querySelector("#contador-noticias");
-const botonesFiltro = document.querySelectorAll(".btn-filtro");
+
+// CORRECCIÓN: Seleccionamos solo los botones de filtro que están dentro de la sección de vistas-deporte
+const botonesFiltro = document.querySelectorAll(".vistas-deporte .btn-filtro");
 
 // --- 2. BASE DE DATOS LOCAL PARA "LEER MÁS" ---
 const articulosCompletos = {
@@ -29,7 +31,7 @@ const articulosCompletos = {
     "1": {
         categoria: "Fútbol - Champions League",
         titulo: "Se definen los cuartos de final en noches mágicas de Europa",
-        cuerpo: "La UEFA Champions League entra en su fase más electrizante. Los emparejamientos de cuartos de final han dejado llaves históricas: el fútbol inglés medirá sus fuerzas directamente contra la mística de los clubes españoles. Expertos estiman que los planteamientos de juego de posesión serán puestos a prueba frente a las contras letales que caracterizan este tramo definitivo de la competición."
+        cuerpo: "La UEFA Champions League entra en su fase más electrizante. Los emparejamientos de cuartos de final han dejado llaves históricas: el fútbol inglés medirá sus fuerzas directamente contra la mística de los clubes españoles. Expertos estiman que los plateau de juego de posesión serán puestos a prueba frente a las contras letales que caracterizan este tramo definitivo de la competición."
     },
     "2": {
         categoria: "Básquet - NBA",
@@ -69,6 +71,8 @@ function cambiarVista(noticiaId) {
 
 // Pintar comentarios guardados
 function renderOpiniones() {
+    if (!contadorOpiniones || !listaOpiniones) return;
+
     contadorOpiniones.textContent = `Total de opiniones: ${opiniones.length}`;
     if (opiniones.length === 0) {
         listaOpiniones.innerHTML = `<p style="color: grey; font-style: italic;">La tribuna está vacía. ¡Sé el primero en comentar!</p>`;
@@ -91,17 +95,19 @@ function escapeHTML(text) {
 // --- 5. LOGICA DE EVENTOS ---
 
 // Corrección Menú Hamburguesa
-menuToggle.addEventListener("click", () => {
-    const expandido = menuToggle.getAttribute("aria-expanded") === "true";
-    menuToggle.setAttribute("aria-expanded", !expandido);
-    navMenu.classList.toggle("active");
-});
+if (menuToggle && navMenu) {
+    menuToggle.addEventListener("click", () => {
+        const expandido = menuToggle.getAttribute("aria-expanded") === "true";
+        menuToggle.setAttribute("aria-expanded", !expandido);
+        navMenu.classList.toggle("active");
+    });
+}
 
 // Cerrar menú móvil automáticamente al hacer clic en un enlace de navegación
 document.querySelectorAll(".nav-link").forEach(link => {
     link.addEventListener("click", () => {
-        navMenu.classList.remove("active");
-        menuToggle.setAttribute("aria-expanded", "false");
+        if (navMenu) navMenu.classList.remove("active");
+        if (menuToggle) menuToggle.setAttribute("aria-expanded", "false");
     });
 });
 
@@ -115,7 +121,12 @@ document.addEventListener("click", (e) => {
     }
 });
 
-btnVolver.addEventListener("click", () => cambiarVista(null));
+if (btnVolver) {
+    btnVolver.addEventListener("click", (e) => {
+        e.preventDefault();
+        cambiarVista(null);
+    });
+}
 
 // Filtros de Vistas (Multideporte)
 botonesFiltro.forEach(boton => {
@@ -134,49 +145,61 @@ botonesFiltro.forEach(boton => {
                 noticia.style.display = "none";
             }
         });
-        contadorNoticias.textContent = `Noticias encontradas: ${contador}`;
-        buscador.value = "";
+        if (contadorNoticias) contadorNoticias.textContent = `Noticias encontradas: ${contador}`;
+        if (buscador) buscador.value = "";
     });
 });
 
 // Buscador Inteligente
-buscador.addEventListener("input", () => {
-    const termino = buscador.value.toLowerCase();
-    let contador = 0;
-    noticias.forEach(noticia => {
-        if (noticia.textContent.toLowerCase().includes(termino)) {
-            noticia.style.display = "block";
-            contador++;
-        } else {
-            noticia.style.display = "none";
-        }
+if (buscador) {
+    buscador.addEventListener("input", () => {
+        const termino = buscador.value.toLowerCase();
+        let contador = 0;
+
+        // Al buscar, reiniciamos el estado activo de los botones de filtro al botón "Todos"
+        botonesFiltro.forEach(b => b.classList.remove("active"));
+        const btnTodos = document.querySelector(".vistas-deporte .btn-filtro[data-deporte='todos']");
+        if (btnTodos) btnTodos.classList.add("active");
+
+        noticias.forEach(noticia => {
+            if (noticia.textContent.toLowerCase().includes(termino)) {
+                noticia.style.display = "block";
+                contador++;
+            } else {
+                noticia.style.display = "none";
+            }
+        });
+        if (contadorNoticias) contadorNoticias.textContent = `Noticias encontradas: ${contador}`;
     });
-    contadorNoticias.textContent = `Noticias encontradas: ${contador}`;
-});
+}
 
 // Guardar Comentarios en Formulario
-formulario.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const nuevaOpinion = {
-        nombre: document.querySelector("#nombre").value,
-        equipo: document.querySelector("#equipo").value,
-        comentario: document.querySelector("#opinion_texto").value
-    };
-    opiniones.push(nuevaOpinion);
-    localStorage.setItem("alangulo_opiniones", JSON.stringify(opiniones));
-    renderOpiniones();
-    formulario.reset();
-});
-
-// Eliminar Comentario
-listaOpiniones.addEventListener("click", (e) => {
-    if (e.target.classList.contains("btn-eliminar")) {
-        const id = e.target.dataset.id;
-        opiniones.splice(id, 1);
+if (formulario) {
+    formulario.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const nuevaOpinion = {
+            nombre: document.querySelector("#nombre").value,
+            equipo: document.querySelector("#equipo").value,
+            comentario: document.querySelector("#opinion_texto").value
+        };
+        opiniones.push(nuevaOpinion);
         localStorage.setItem("alangulo_opiniones", JSON.stringify(opiniones));
         renderOpiniones();
-    }
-});
+        formulario.reset();
+    });
+}
+
+// Eliminar Comentario
+if (listaOpiniones) {
+    listaOpiniones.addEventListener("click", (e) => {
+        if (e.target.classList.contains("btn-eliminar")) {
+            const id = e.target.dataset.id;
+            opiniones.splice(id, 1);
+            localStorage.setItem("alangulo_opiniones", JSON.stringify(opiniones));
+            renderOpiniones();
+        }
+    });
+}
 
 // --- 6. ARRANQUE INICIAL ---
 renderOpiniones();
