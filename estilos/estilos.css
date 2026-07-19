@@ -55,13 +55,13 @@ body {
 }
 
 .main-header {
-    background-color: var(--dark-color);
-    color: #ffffff;
+    background: var(--dark-color);
+    color: #fff;
     padding: 15px 0;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .15);
 }
 
 .header-container {
@@ -77,26 +77,34 @@ body {
 .main-header h1 {
     font-size: 1.8rem;
     font-weight: 800;
-    letter-spacing: 1px;
     color: #fff;
 }
 
-.main-header h1 i {
-    color: var(--accent-color);
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 .nav-menu a {
     color: #e0e0e0;
     text-decoration: none;
-    margin-left: 20px;
     font-weight: 600;
-    font-size: 1rem;
-    transition: var(--transition-smooth);
+    transition: .3s;
 }
 
 .nav-menu a:hover {
     color: var(--accent-color);
-    transform: translateY(-2px);
+}
+
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
 }
 
 .hero-section {
@@ -465,29 +473,19 @@ body {
 }
 
 @media (max-width:768px) {
-
-    .header-container {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 15px;
-    }
-
     .menu-toggle {
         display: block;
     }
 
     .nav-menu {
         display: none;
+        flex-direction: column;
         position: absolute;
-        top: 70px;
+        top: 100%;
         left: 0;
         width: 100%;
         background: var(--dark-color);
-        flex-direction: column;
-        text-align: center;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, .25);
-        z-index: 999;
+        padding: 15px 0;
     }
 
     .nav-menu.active {
@@ -495,8 +493,9 @@ body {
     }
 
     .nav-menu a {
-        margin: 0;
-        padding: 18px;
+        width: 100%;
+        padding: 15px;
+        text-align: center;
         border-top: 1px solid rgba(255, 255, 255, .1);
     }
 
@@ -540,35 +539,6 @@ body {
     border-radius: 6px;
     cursor: pointer;
 }
-
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 2rem;
-    cursor: pointer;
-    padding: 8px 12px;
-    transition: .3s;
-}
-
-.menu-toggle:hover {
-    color: var(--accent-color);
-    transform: scale(1.1);
-}
-
-.nav-menu {
-    transition: .3s;
-}
-
-.nav-menu a {
-    transition: .3s;
-}
-
-.nav-menu a:hover {
-    background: rgba(255, 255, 255, .08);
-}
-
 
 .busqueda {
     width: 90%;
