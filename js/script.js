@@ -23,9 +23,14 @@ const menu = document.querySelector("#menu-toggle");
 const nav = document.querySelector(".nav-menu");
 
 menu.addEventListener("click", () => {
-
     nav.classList.toggle("active");
-
+    if (nav.classList.contains("active")) {
+        menu.textContent = "✕";
+        menu.setAttribute("aria-expanded", "true");
+    } else {
+        menu.textContent = "☰";
+        menu.setAttribute("aria-expanded", "false");
+    }
 });
 
 function renderOpiniones() {

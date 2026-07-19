@@ -67,11 +67,11 @@ body {
 .header-container {
     width: 95%;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
+    position: relative;
 }
 
 .main-header h1 {
@@ -464,21 +464,40 @@ body {
     color: #fff;
 }
 
-@media (max-width: 768px) {
+@media (max-width:768px) {
+
     .header-container {
-        flex-direction: column;
-        gap: 15px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 15px;
+    }
+
+    .menu-toggle {
+        display: block;
     }
 
     .nav-menu {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--dark-color);
+        flex-direction: column;
+        text-align: center;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, .25);
+        z-index: 999;
+    }
+
+    .nav-menu.active {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
     }
 
     .nav-menu a {
-        margin: 0 10px;
+        margin: 0;
+        padding: 18px;
+        border-top: 1px solid rgba(255, 255, 255, .1);
     }
 
     .hero-section {
@@ -495,21 +514,6 @@ body {
         padding: 20px;
     }
 
-    .menu-toggle {
-        display: block;
-    }
-
-    .nav-menu {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background: var(--dark-color);
-        padding: 20px 0;
-    }
-
-    .nav-menu.active {
-        display: flex;
-    }
 }
 
 .opiniones-comunidad {
@@ -539,12 +543,32 @@ body {
 
 .menu-toggle {
     display: none;
-    font-size: 2rem;
-    color: white;
     background: none;
     border: none;
+    color: #fff;
+    font-size: 2rem;
     cursor: pointer;
+    padding: 8px 12px;
+    transition: .3s;
 }
+
+.menu-toggle:hover {
+    color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+.nav-menu {
+    transition: .3s;
+}
+
+.nav-menu a {
+    transition: .3s;
+}
+
+.nav-menu a:hover {
+    background: rgba(255, 255, 255, .08);
+}
+
 
 .busqueda {
     width: 90%;
