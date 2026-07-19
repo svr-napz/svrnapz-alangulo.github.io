@@ -134,3 +134,33 @@ botonesFavoritos.forEach(boton => {
         localStorage.setItem("favoritos", JSON.stringify(favoritos));
     });
 });
+
+async function cargarJugador(nombre, ids) {
+    try {
+        const respuesta = await fetch(
+            `https://www.thesportsdb.com/api/v1/json/3/searchplayers.php?p=${encodeURIComponent(nombre)}`
+        );
+        const datos = await respuesta.json();
+        const jugador = datos.player[0];
+        document.getElementById(ids.img).src = jugador.strThumb;
+        document.getElementById(ids.equipo).textContent = jugador.strTeam;
+        document.getElementById(ids.pais).textContent = jugador.strNationality;
+        document.getElementById(ids.posicion).textContent = jugador.strPosition;
+    } catch (error) {
+
+        console.error(error);
+    }
+}
+cargarJugador("Lionel Messi", {
+    img: "messi-img",
+    equipo: "messi-equipo",
+    pais: "messi-pais",
+    posicion: "messi-posicion"
+});
+
+cargarJugador("Cristiano Ronaldo", {
+    img: "cr7-img",
+    equipo: "cr7-equipo",
+    pais: "cr7-pais",
+    posicion: "cr7-posicion"
+});

@@ -702,3 +702,40 @@ body {
     background: #ff4d6d;
     color: white;
 }
+
+.grid-estrellas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.card-jugador {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
+    transition: .3s;
+}
+
+.card-jugador:hover {
+    transform: translateY(-8px);
+}
+
+.card-jugador img {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 20px auto;
+    border: 5px solid var(--accent-color);
+}
+
+.card-jugador h3 {
+    color: var(--dark-color);
+    margin-bottom: 15px;
+}
+
+.card-jugador p {
+    margin: 8px 0;
+}
