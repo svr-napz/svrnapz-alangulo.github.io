@@ -110,5 +110,27 @@ function cambiarSlide() {
     slides[indice].classList.add("activo");
 
 }
-
 setInterval(cambiarSlide, 4000);
+
+
+const botonesFavoritos = document.querySelectorAll(".btn-favorito");
+let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+botonesFavoritos.forEach(boton => {
+    const id = boton.dataset.id;
+    if (favoritos.includes(id)) {
+        boton.classList.add("activo");
+        boton.textContent = "♡ Guardado";
+    }
+    boton.addEventListener("click", () => {
+        if (favoritos.includes(id)) {
+            favoritos = favoritos.filter(f => f !== id);
+            boton.classList.remove("activo");
+            boton.textContent = "♡ Favorito";
+        } else {
+            favoritos.push(id);
+            boton.classList.add("activo");
+            boton.textContent = "♡ Guardado";
+        }
+        localStorage.setItem("favoritos", JSON.stringify(favoritos));
+    });
+});
